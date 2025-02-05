@@ -1,0 +1,93 @@
+/* Home.module.css */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .navLink {
+    font-size: 18px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .navLink:hover {
+    color: #0070f3;
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .userTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .tableHeader {
+    text-align: left;
+    padding: 10px;
+    background-color: #0070f3;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .tableRow {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tableData {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .tableActions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .editButton, .deleteButton {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .editButton {
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .editButton:hover {
+    background-color: #45a049;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .deleteButton:hover {
+    background-color: #e53935;
+  }
+  
