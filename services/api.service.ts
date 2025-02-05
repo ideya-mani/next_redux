@@ -15,15 +15,15 @@ export const deleteUserApi = (userId: string) => {
 
 // Fetch single user from API
 export const fetchUserByIdApi = (userId: string) => {
-  return axios.get(`http://localhost:3000/api/users/${userId}`);
+  return axios.get(`${API_BASE_URL}${USERS}/${userId}`);
 };
 
 // update single user from API
 export const updateUserApi = (userId: string, updatedData: any) => {
-  return axios.put(`http://localhost:3000/api/users/${userId}`, updatedData);
+  return axios.put(`${API_BASE_URL}${USERS}/${userId}`, updatedData);
 };
 
 // create new user from API
 export const createUserApi = (userData: any) => {
-  return axios.post(`http://localhost:3000/api/users`, userData);
+  return axios.post(`${API_BASE_URL}${USERS}/users`, userData);
 };
