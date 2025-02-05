@@ -1,7 +1,7 @@
 // redux/userActions.ts
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { deleteUserApi, fetchUsersApi, fetchUserByIdApi, updateUserApi, createUserApi  } from '../services/api.service';
-
+import { User } from './types';
 // Fetch users
 export const fetchUsers = createAsyncThunk('/users', async () => {
   const response = await fetchUsersApi();
@@ -37,7 +37,7 @@ export const updateUser = createAsyncThunk(
 // Create a new user
 export const createUser = createAsyncThunk(
   'users/createUser',
-  async (userData: any) => {
+  async (userData: User) => {
     const response = await createUserApi(userData);
     return response.data;
   }
