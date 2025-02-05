@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "target": "es5", // Consider updating to "es6" or higher for modern features
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,24 +10,26 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "module": "esnext",
-    "strict": false,
+    "strict": true, // Enable all strict type-checking options
     "noEmit": true,
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "plugins": [{ "name": "next" }],
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true, // Ensure consistent file naming
+    "noUnusedLocals": true, // Warn on unused locals
+    "noUnusedParameters": true, // Warn on unused parameters
+    "baseUrl": ".", // Enable baseUrl for module resolution
+    "paths": {
+      "@/*": ["./src/*"] // Example path alias for cleaner imports
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
     "pages/**/*",
+    "app/**/*", // Include the app directory for Next.js 13+
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

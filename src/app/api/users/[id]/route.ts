@@ -4,12 +4,9 @@ import { connectToDatabase } from '../../../../../lib/mangodb';
 import { ObjectId } from 'mongodb';
 
 // GET /api/users/[id] - Fetch a single user from the database
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: Request, context: { params: { id: string } }) {
   try {
-    const { id } = params;
+    const { id } = context.params;  // Corrected: Destructure from `context.params`
     const db = await connectToDatabase();
     const user = await db.collection('users').findOne({ _id: new ObjectId(id) });
 
@@ -20,27 +17,21 @@ export async function GET(
     return NextResponse.json(user);
   } catch (error) {
     console.error('Error fetching user:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch user' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch user' }, { status: 500 });
   }
 }
 
 // PUT /api/users/[id] - Update a user in the database
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: Request, context: { params: { id: string } }) {
   try {
-    const { id } = params; // Extract user ID from URL params
+    const { id } = context.params;  // Corrected: Destructure from `context.params`
     const { name, email }: { name: string; email: string } = await request.json();
 
     const db = await connectToDatabase();
     const updatedUser = { name, email };
 
     const result = await db.collection('users').updateOne(
-      { _id: new ObjectId(id) }, // Use ObjectId for querying MongoDB
+      { _id: new ObjectId(id) },
       { $set: updatedUser }
     );
 
@@ -51,20 +42,14 @@ export async function PUT(
     return NextResponse.json({ _id: id, ...updatedUser });
   } catch (error) {
     console.error('Error updating user:', error);
-    return NextResponse.json(
-      { error: 'Failed to update user' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to update user' }, { status: 500 });
   }
 }
 
 // DELETE /api/users/[id] - Delete a user from the database
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request, context: { params: { id: string } }) {
   try {
-    const { id } = params; // Extract user ID from URL params
+    const { id } = context.params;  // Corrected: Destructure from `context.params`
 
     const db = await connectToDatabase();
     const result = await db.collection('users').deleteOne({ _id: new ObjectId(id) });
@@ -76,9 +61,6 @@ export async function DELETE(
     return NextResponse.json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error('Error deleting user:', error);
-    return NextResponse.json(
-      { error: 'Failed to delete user' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to delete user' }, { status: 500 });
   }
 }
