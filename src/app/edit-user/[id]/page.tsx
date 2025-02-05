@@ -13,9 +13,6 @@ const EditUser: React.FC = () => {
   const { selectedUser, loading } = useAppSelector((state) => state.user);
   const [updatedUser, setUpdatedUser] = useState({ name: '', email: '' });
   
-  const userID = () => {
-    
-  }
   useEffect(() => {
     if (id) {
       dispatch(fetchUserById(id));
